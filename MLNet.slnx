@@ -1,1 +1,8 @@
-<Solution />
+<Solution>
+  <Folder Name="/Nucleo/">
+    <Project Path="MLNet.Aplicacao/MLNet.Aplicacao.csproj" />
+    <Project Path="MLNet.Dominio/MLNet.Dominio.csproj" />
+    <Project Path="MLNet.Infraestrutura/MLNet.Infraestrutura.csproj" />
+  </Folder>
+  <Project Path="MLNet.Api/MLNet.Api.csproj" />
+</Solution>
