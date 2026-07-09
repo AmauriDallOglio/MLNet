@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MLNet.Dominio.Entidade;
+using MLNet.Dominio.EntidadeOllama;
 using MLNet.Infraestrutura.Mapeamento;
+using MLNet.Infraestrutura.MapeamentoOllama;
 
 namespace MLNet.Infraestrutura.Contexto
 {
@@ -14,6 +16,8 @@ namespace MLNet.Infraestrutura.Contexto
 
         public DbSet<ModeloML> ModeloML { get; set; }
 
+        public DbSet<Sessao> Sessao { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +25,7 @@ namespace MLNet.Infraestrutura.Contexto
 
 
             modelBuilder.ApplyConfiguration(new ModeloMLMapeamento());
+            modelBuilder.ApplyConfiguration(new SessaoOllamaMapeamento());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

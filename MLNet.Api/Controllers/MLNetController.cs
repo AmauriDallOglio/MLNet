@@ -16,14 +16,14 @@ namespace MLNet.Api.Controllers
 
 
 
-        [HttpGet("GerarTreinamento")]
-        public async Task<IActionResult?> GerarTreinamento([FromQuery] GerarTreinamentoRequest request, CancellationToken cancellationToken)
-        {
-            ResultadoOperacao resultado = await _GerarTreinamentoHandler.Executar(request, cancellationToken);
-            if (resultado.Sucesso)
-                return Ok(resultado.Resultado);
-            else
-                return BadRequest(resultado.Mensagem);
-        }
+        //[HttpGet("GerarTreinamento")]
+        //public async Task<IActionResult?> GerarTreinamento([FromQuery] GerarTreinamentoRequest request, CancellationToken cancellationToken)
+        //{
+        //    ResultadoOperacao resultado = await _GerarTreinamentoHandler.Executar(request, cancellationToken);
+        //    if (resultado.Sucesso)
+        //        return Ok(resultado.Resultado);
+        //    else
+        //        return BadRequest(resultado.Mensagem);
+        //}
     }
 }

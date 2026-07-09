@@ -12,6 +12,7 @@
     {
         public string ConexaoServidor { get; set; } = string.Empty;
         public string ConexaoServidorQuery { get; set; } = string.Empty;
+        public string ConexaoServidorOllama { get; set; } = string.Empty;
     }
 
     public class LoggingDto

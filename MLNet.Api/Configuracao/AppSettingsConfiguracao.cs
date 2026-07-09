@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MLNet.Aplicacao.DTO;
 using MLNet.Infraestrutura.Contexto;
+using MLNet.Infraestrutura.ContextoOllama;
 
 namespace MLNet.Api.Configuracao
 {
@@ -20,9 +21,13 @@ namespace MLNet.Api.Configuracao
             var conexaoQuery = string.IsNullOrWhiteSpace(appSettingsDto.ConnectionStrings.ConexaoServidorQuery)
                 ? conexaoCommand
                 : appSettingsDto.ConnectionStrings.ConexaoServidorQuery;
+            var conexaoOllama = string.IsNullOrWhiteSpace(appSettingsDto.ConnectionStrings.ConexaoServidorOllama)
+                ? conexaoCommand
+                : appSettingsDto.ConnectionStrings.ConexaoServidorOllama;
 
             services.AddDbContext<CommandContexto>(opt => opt.UseSqlServer(conexaoCommand));
             services.AddDbContext<GenericoContexto>(opt => opt.UseSqlServer(conexaoCommand));
+            services.AddDbContext<CommandOllamaContexto>(opt => opt.UseSqlServer(conexaoOllama));
 
             return appSettingsDto;
         }
