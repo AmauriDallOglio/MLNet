@@ -1,57 +1,39 @@
-# ML.NET 
+# Módulo de Treinamento com ML.NET
 
-Microserviço desenvolvido em **.NET 8** para carregamento e execução de modelos de **Machine Learning** utilizando **ML.NET**. O objetivo é disponibilizar uma API REST para realizar inferências de forma rápida, escalável e desacoplada das aplicações consumidoras.
+ML.NET é um framework de machine learning de código aberto, criado pela Microsoft para desenvolvedores .NET. Ele permite treinar, avaliar e usar modelos de ML diretamente em C#/.NET.
 
-## Funcionalidades
+O ML.NET atua como o motor de aprendizado sobre os dados do sistema ERP inseridos pelos usuários. O objetivo é que o sistema não seja estático: ele aprende com o histórico de cada tenant e refina suas previsões/classificações ao longo do tempo, sempre respeitando o isolamento multi-tenant dos dados. O modelo treinado é salvo em um arquivo binário, que pode ser carregado posteriormente para gerar previsões em produção AutoML
 
-* Carregamento de modelos treinados (`.zip`) durante a inicialização da aplicação.
-* Execução de previsões (inferência) através de API REST.
-* Gerenciamento dos modelos em memória para maior desempenho.
-* Suporte ao versionamento e atualização de modelos.
-* Documentação da API com Swagger/OpenAPI.
-* Health Checks para monitoramento da aplicação.
-* Logging estruturado para auditoria e diagnóstico.
-* Pronto para execução em ambientes Docker.
-
-## Tecnologias
-
-* .NET 8
-* ASP.NET Core Web API
-* ML.NET
-* Swagger / OpenAPI
-* Serilog
-* Docker
-
-##  Estrutura
-
-
+Este módulo faz parte de uma solução multi-tenant de gestão financeira desenvolvida em **.NET** com **SQL Server**. O componente aqui documentado é responsável pelo treinamento e retreinamento de modelos de Machine Learning utilizando **ML.NET**, aplicados a cenários de análise e classificação de dados financeiros dentro do próprio sistema.
 
 ## Objetivo
 
-Este projeto tem como finalidade centralizar a execução de modelos de Machine Learning em um único serviço, permitindo que diferentes sistemas consumam previsões por meio de uma API, facilitando a manutenção, escalabilidade e evolução dos modelos sem impactar as aplicações clientes.
+Permitir que o sistema aprenda continuamente a partir dos dados inseridos pelos usuários, mantendo a qualidade do modelo ao longo do tempo sem perder o conhecimento adquirido em treinamentos anteriores.
 
-## Casos de Uso
+## Estratégia de Retreinamento
 
-* Classificação de textos
-* Análise de sentimento
-* Predição de categorias
-* Detecção de fraudes
-* Recomendações
-* Previsões baseadas em dados estruturados
+Um dos principais desafios enfrentados no desenvolvimento foi o retreinar o modelo apenas com dados novos, o ML.NET perdia a capacidade de generalizar sobre padrões aprendidos anteriormente.
 
-## Benefícios
+**Solução adotada:**
+- O dataset completo utilizado em cada treinamento é serializado em formato **JSON** e armazenado na coluna `DadosSessoes`, junto ao binário do modelo.
+- A cada novo ciclo de treinamento, o dataset histórico completo é recuperado, combinado com os novos dados e reutilizado, garantindo que o modelo seja sempre retreinado sobre o conjunto de dados integral e não apenas sobre o incremento mais recente.
+- Essa abordagem evita a degradação de performance do modelo em cenários de aprendizado incremental, sem exigir arquiteturas mais complexas (como aprendizado contínuo ou replay buffers externos).
 
-* Arquitetura desacoplada.
-* Reutilização dos modelos de IA.
-* Alta performance com modelos carregados em memória.
-* Facilidade para implantação em ambientes Cloud.
-* Escalabilidade independente dos sistemas consumidores.
+## Arquitetura
 
-## Próximas Evoluções
+O projeto segue um padrão customizado inspirado em **CQRS** (sem uso de MediatR ou AutoMapper), com separação clara de camadas:
 
-* Versionamento automático de modelos.
-* Suporte a múltiplos modelos simultaneamente.
-* Integração com Azure Machine Learning.
-* Monitoramento de métricas de inferência.
-* Cache de resultados.
-* Autenticação e autorização via JWT.
+- **Dominio** — entidades e regras de negócio
+- **Infraestruture** — acesso a dados e integração com o ML.NET
+- **Aplicacao** — orquestração dos casos de uso
+
+## Tecnologias
+
+- .NET
+- ML.NET
+- SQL Server
+- Arquitetura CQRS customizada
+
+## Status
+
+Em desenvolvimento contínuo, com foco atual em refinar o pipeline de retreinamento e a padronização das camadas de injeção de dependência.
