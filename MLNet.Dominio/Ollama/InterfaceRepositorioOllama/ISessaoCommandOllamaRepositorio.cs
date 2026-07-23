@@ -1,7 +1,7 @@
-﻿using MLNet.Dominio.EntidadeOllama;
-using MLNet.Dominio.InterfaceRepositorio;
+﻿using MLNet.Dominio.MLNet.InterfaceRepositorio;
+using MLNet.Dominio.Ollama.EntidadeOllama;
 
-namespace MLNet.Dominio.InterfaceRepositorioOllama
+namespace MLNet.Dominio.Ollama.InterfaceRepositorioOllama
 {
     public interface ISessaoCommandOllamaRepositorio : IGenericoCommandRepositorio<Sessao>
     {

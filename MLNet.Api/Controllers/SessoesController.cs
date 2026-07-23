@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MLNet.Aplicacao.Rotas.SessaoRota;
 using MLNet.Aplicacao.Util;
-using MLNet.Dominio.InterfaceRepositorioOllama;
+using MLNet.Dominio.Ollama.InterfaceRepositorioOllama;
 
 namespace MLNet.Api.Controllers
 {

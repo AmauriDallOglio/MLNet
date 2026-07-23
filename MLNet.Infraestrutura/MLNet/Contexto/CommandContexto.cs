@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace MLNet.Infraestrutura.Contexto
+namespace MLNet.Infraestrutura.MLNet.Contexto
 {
     public class CommandContexto : GenericoContexto
     {

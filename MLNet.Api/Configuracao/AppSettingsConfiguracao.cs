@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MLNet.Aplicacao.DTO;
-using MLNet.Infraestrutura.Contexto;
-using MLNet.Infraestrutura.ContextoOllama;
+using MLNet.Infraestrutura.MLNet.Contexto;
+using MLNet.Infraestrutura.Ollama.ContextoOllama;
 
 namespace MLNet.Api.Configuracao
 {

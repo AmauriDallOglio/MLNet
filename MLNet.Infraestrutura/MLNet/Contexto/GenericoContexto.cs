@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MLNet.Dominio.Entidade;
-using MLNet.Dominio.EntidadeOllama;
-using MLNet.Infraestrutura.Mapeamento;
-using MLNet.Infraestrutura.MapeamentoOllama;
+using MLNet.Dominio.MLNet.Entidade;
+using MLNet.Dominio.Ollama.EntidadeOllama;
+using MLNet.Infraestrutura.MLNet.Mapeamento;
+using MLNet.Infraestrutura.Ollama.MapeamentoOllama;
 
-namespace MLNet.Infraestrutura.Contexto
+namespace MLNet.Infraestrutura.MLNet.Contexto
 {
     public class GenericoContexto : DbContext
     {

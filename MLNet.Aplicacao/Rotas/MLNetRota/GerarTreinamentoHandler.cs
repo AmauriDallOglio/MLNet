@@ -1,6 +1,6 @@
 ﻿using MLNet.Aplicacao.Util;
-using MLNet.Dominio.Entidade;
-using MLNet.Dominio.InterfaceRepositorio;
+using MLNet.Dominio.MLNet.Entidade;
+using MLNet.Dominio.MLNet.InterfaceRepositorio;
 using System.Diagnostics;
 
 namespace MLNet.Aplicacao.Rotas.MLNet

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MLNet.Dominio.EntidadeOllama;
+using MLNet.Dominio.Ollama.EntidadeOllama;
 
-namespace MLNet.Infraestrutura.MapeamentoOllama
+namespace MLNet.Infraestrutura.Ollama.MapeamentoOllama
 {
     public class SessaoOllamaMapeamento : IEntityTypeConfiguration<Sessao>
     {

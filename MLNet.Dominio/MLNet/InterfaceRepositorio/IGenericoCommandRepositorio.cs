@@ -1,4 +1,4 @@
-﻿namespace MLNet.Dominio.InterfaceRepositorio
+﻿namespace MLNet.Dominio.MLNet.InterfaceRepositorio
 {
     public interface IGenericoCommandRepositorio<T> where T : class
     {

@@ -1,4 +1,4 @@
-﻿namespace MLNet.Dominio.EntidadeOllama
+﻿namespace MLNet.Dominio.Ollama.EntidadeOllama
 {
     public class Sessao
     {

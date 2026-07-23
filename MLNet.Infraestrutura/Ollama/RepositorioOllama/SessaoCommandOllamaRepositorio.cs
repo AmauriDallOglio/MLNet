@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MLNet.Dominio.EntidadeOllama;
-using MLNet.Dominio.InterfaceRepositorioOllama;
-using MLNet.Infraestrutura.ContextoOllama;
-using MLNet.Infraestrutura.Repositorio;
+using MLNet.Dominio.Ollama.EntidadeOllama;
+using MLNet.Dominio.Ollama.InterfaceRepositorioOllama;
+using MLNet.Infraestrutura.MLNet.Repositorio;
+using MLNet.Infraestrutura.Ollama.ContextoOllama;
 
-namespace MLNet.Infraestrutura.RepositorioOllama
+namespace MLNet.Infraestrutura.Ollama.RepositorioOllama
 {
     public class SessaoCommandOllamaRepositorio : GenericoCommandRepositorio<Sessao>, ISessaoCommandOllamaRepositorio
     {

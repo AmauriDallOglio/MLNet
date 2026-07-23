@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MLNet.Dominio.Entidade;
+using MLNet.Dominio.MLNet.Entidade;
 
-namespace MLNet.Infraestrutura.Mapeamento
+namespace MLNet.Infraestrutura.MLNet.Mapeamento
 {
     public class ModeloMLMapeamento : IEntityTypeConfiguration<ModeloML>
     {

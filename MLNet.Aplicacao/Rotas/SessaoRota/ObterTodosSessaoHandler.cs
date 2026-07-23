@@ -1,5 +1,5 @@
 ﻿using MLNet.Aplicacao.Util;
-using MLNet.Dominio.InterfaceRepositorioOllama;
+using MLNet.Dominio.Ollama.InterfaceRepositorioOllama;
 
 namespace MLNet.Aplicacao.Rotas.SessaoRota
 {

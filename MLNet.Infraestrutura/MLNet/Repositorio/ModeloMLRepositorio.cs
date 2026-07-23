@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MLNet.Dominio.Entidade;
-using MLNet.Dominio.InterfaceRepositorio;
-using MLNet.Infraestrutura.Contexto;
+using MLNet.Dominio.MLNet.Entidade;
+using MLNet.Dominio.MLNet.InterfaceRepositorio;
+using MLNet.Infraestrutura.MLNet.Contexto;
 
-namespace MLNet.Infraestrutura.Repositorio
+namespace MLNet.Infraestrutura.MLNet.Repositorio
 {
     public class ModeloMLRepositorio : GenericoCommandRepositorio<ModeloML>, IModeloMLRepositorio
     {

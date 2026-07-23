@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using MLNet.Dominio.InterfaceRepositorio;
-using MLNet.Infraestrutura.Contexto;
+using MLNet.Dominio.MLNet.InterfaceRepositorio;
+using MLNet.Infraestrutura.MLNet.Contexto;
 
-namespace MLNet.Infraestrutura.Repositorio
+namespace MLNet.Infraestrutura.MLNet.Repositorio
 {
     public class GenericoCommandRepositorio<T> : IGenericoCommandRepositorio<T> where T : class
     {

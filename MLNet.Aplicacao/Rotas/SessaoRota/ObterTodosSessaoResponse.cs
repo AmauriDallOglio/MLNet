@@ -1,4 +1,4 @@
-﻿using MLNet.Dominio.EntidadeOllama;
+﻿using MLNet.Dominio.Ollama.EntidadeOllama;
 
 namespace MLNet.Aplicacao.Rotas.SessaoRota
 {

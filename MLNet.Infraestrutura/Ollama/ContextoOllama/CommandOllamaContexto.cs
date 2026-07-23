@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MLNet.Infraestrutura.Contexto;
+using MLNet.Infraestrutura.MLNet.Contexto;
 
-namespace MLNet.Infraestrutura.ContextoOllama
+namespace MLNet.Infraestrutura.Ollama.ContextoOllama
 {
     public class CommandOllamaContexto : GenericoContexto
     {

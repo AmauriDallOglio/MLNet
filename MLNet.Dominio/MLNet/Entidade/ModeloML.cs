@@ -1,4 +1,4 @@
-﻿namespace MLNet.Dominio.Entidade
+﻿namespace MLNet.Dominio.MLNet.Entidade
 {
     public class ModeloML
     {

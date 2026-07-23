@@ -2,10 +2,10 @@
 using MLNet.Aplicacao.Rotas.MLNet;
 using MLNet.Aplicacao.Rotas.SessaoRota;
 using MLNet.Aplicacao.Util;
-using MLNet.Dominio.InterfaceRepositorio;
-using MLNet.Dominio.InterfaceRepositorioOllama;
-using MLNet.Infraestrutura.Repositorio;
-using MLNet.Infraestrutura.RepositorioOllama;
+using MLNet.Dominio.MLNet.InterfaceRepositorio;
+using MLNet.Dominio.Ollama.InterfaceRepositorioOllama;
+using MLNet.Infraestrutura.MLNet.Repositorio;
+using MLNet.Infraestrutura.Ollama.RepositorioOllama;
 
 namespace MLNet.Api.Configuracao
 {
