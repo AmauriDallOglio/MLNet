@@ -34,6 +34,12 @@ Essa separação mantém o treinamento desacoplado da API e concentra a lógica 
 - Arquitetura em camadas
 - CQRS customizado
 
+<img width="1490" height="768" alt="image" src="https://github.com/user-attachments/assets/62ff3081-a6a8-489f-ae74-38f87bd4a254" />
+
+<img width="1405" height="175" alt="image" src="https://github.com/user-attachments/assets/da215653-09e6-4e97-accc-7736c64ef1ba" />
+
+
+
 ## Objetivo
 
 O módulo de treinamento tem como finalidade:
