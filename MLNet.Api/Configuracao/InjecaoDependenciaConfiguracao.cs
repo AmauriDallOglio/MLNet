@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MLNet.Aplicacao.Rotas.MLNet;
+using MLNet.Aplicacao.Rotas.MLNetRota;
 using MLNet.Aplicacao.Rotas.SessaoRota;
 using MLNet.Aplicacao.Util;
 using MLNet.Dominio.MLNet.InterfaceRepositorio;
@@ -24,14 +25,18 @@ namespace MLNet.Api.Configuracao
             //Aplicacao
             builder.Services.AddScoped<GerarTreinamentoHandler>();
             builder.Services.AddScoped<IContratoBaseHandler<GerarTreinamentoRequest, ResultadoOperacao>, GerarTreinamentoHandler>();
+            builder.Services.AddScoped<ObterTreinamentoHandler>();
+            builder.Services.AddScoped<IContratoBaseHandler<ObterTreinamentoRequest, ResultadoOperacao>, ObterTreinamentoHandler>();
+
             builder.Services.AddSingleton(typeof(IPrintaConsole<>), typeof(PrintaConsole<>));
             builder.Services.AddScoped<IContratoBaseHandler<ObterTodosSessaoRequest, ResultadoOperacao>, ObterTodosSessaoHandler>();
 
             //Dominio
+
             builder.Services.AddScoped<IModeloMLRepositorio, ModeloMLRepositorio>();
             builder.Services.AddScoped<ISessaoCommandOllamaRepositorio, SessaoCommandOllamaRepositorio>();
- 
 
+   
 
 
             builder.Services.Configure<ApiBehaviorOptions>(options =>
