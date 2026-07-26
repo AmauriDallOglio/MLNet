@@ -27,6 +27,8 @@ namespace MLNet.Api.Configuracao
             builder.Services.AddScoped<IContratoBaseHandler<GerarTreinamentoRequest, ResultadoOperacao>, GerarTreinamentoHandler>();
             builder.Services.AddScoped<ObterTreinamentoHandler>();
             builder.Services.AddScoped<IContratoBaseHandler<ObterTreinamentoRequest, ResultadoOperacao>, ObterTreinamentoHandler>();
+            builder.Services.AddScoped<ObterRespostaTreinamentoHandler>();
+            builder.Services.AddScoped<IContratoBaseHandler<ObterRespostaTreinamentoRequest, ResultadoOperacao>, ObterRespostaTreinamentoHandler>();
 
             builder.Services.AddSingleton(typeof(IPrintaConsole<>), typeof(PrintaConsole<>));
             builder.Services.AddScoped<IContratoBaseHandler<ObterTodosSessaoRequest, ResultadoOperacao>, ObterTodosSessaoHandler>();

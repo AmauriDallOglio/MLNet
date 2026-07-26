@@ -21,6 +21,14 @@ namespace MLNet.Infraestrutura.MLNet.Repositorio
             return ultimoModelo;
         }
 
+        public async Task<ModeloML?> ObterPorVersaoAsync(int versao, CancellationToken cancellationToken)
+        {
+            var modelo = await _CommandContexto.ModeloML
+                .OrderByDescending(m => m.DataTreinamento)
+                .FirstOrDefaultAsync(m => m.Versao == versao, cancellationToken);
+
+            return modelo;
+        }
 
 
 

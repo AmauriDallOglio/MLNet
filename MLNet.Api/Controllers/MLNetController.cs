@@ -11,10 +11,16 @@ namespace MLNet.Api.Controllers
     {
         private readonly GerarTreinamentoHandler _GerarTreinamentoHandler;
         private readonly ObterTreinamentoHandler _ObterTreinamentoHandler;
-        public MLNetController( GerarTreinamentoHandler gerarTreinamentoHandler, ObterTreinamentoHandler obterTreinamentoHandler )
+        private readonly ObterRespostaTreinamentoHandler _ObterRespostaTreinamentoHandler;
+
+        public MLNetController(
+            GerarTreinamentoHandler gerarTreinamentoHandler,
+            ObterTreinamentoHandler obterTreinamentoHandler,
+            ObterRespostaTreinamentoHandler obterRespostaTreinamentoHandler)
         {
             _GerarTreinamentoHandler = gerarTreinamentoHandler;
             _ObterTreinamentoHandler = obterTreinamentoHandler;
+            _ObterRespostaTreinamentoHandler = obterRespostaTreinamentoHandler;
         }
 
 
@@ -38,6 +44,16 @@ namespace MLNet.Api.Controllers
                 return Ok(resultado.Resultado);
             else
                 return BadRequest(resultado.Mensagem);
+        }
+
+        [HttpGet("ObterRespostaTreinamento")]
+        public async Task<IActionResult?> ObterRespostaTreinamento([FromQuery] ObterRespostaTreinamentoRequest request, CancellationToken cancellationToken)
+        {
+            ResultadoOperacao resultado = await _ObterRespostaTreinamentoHandler.Executar(request, cancellationToken);
+            if (resultado.Sucesso)
+                return Ok(resultado.Resultado);
+            else
+                return StatusCode(resultado.StatusCodigo ?? 400, resultado.Mensagem);
         }
 
 
