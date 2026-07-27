@@ -12,15 +12,18 @@ namespace MLNet.Api.Controllers
         private readonly GerarTreinamentoHandler _GerarTreinamentoHandler;
         private readonly ObterTreinamentoHandler _ObterTreinamentoHandler;
         private readonly ObterRespostaTreinamentoHandler _ObterRespostaTreinamentoHandler;
+        private readonly AtualizarTreinamentoHandler _AtualizarTreinamentoHandler;
 
         public MLNetController(
             GerarTreinamentoHandler gerarTreinamentoHandler,
             ObterTreinamentoHandler obterTreinamentoHandler,
-            ObterRespostaTreinamentoHandler obterRespostaTreinamentoHandler)
+            ObterRespostaTreinamentoHandler obterRespostaTreinamentoHandler,
+            AtualizarTreinamentoHandler atualizarTreinamentoHandler)
         {
             _GerarTreinamentoHandler = gerarTreinamentoHandler;
             _ObterTreinamentoHandler = obterTreinamentoHandler;
             _ObterRespostaTreinamentoHandler = obterRespostaTreinamentoHandler;
+            _AtualizarTreinamentoHandler = atualizarTreinamentoHandler;
         }
 
 
@@ -50,6 +53,16 @@ namespace MLNet.Api.Controllers
         public async Task<IActionResult?> ObterRespostaTreinamento([FromQuery] ObterRespostaTreinamentoRequest request, CancellationToken cancellationToken)
         {
             ResultadoOperacao resultado = await _ObterRespostaTreinamentoHandler.Executar(request, cancellationToken);
+            if (resultado.Sucesso)
+                return Ok(resultado.Resultado);
+            else
+                return StatusCode(resultado.StatusCodigo ?? 400, resultado.Mensagem);
+        }
+
+        [HttpGet("AtualizarTreinamento")]
+        public async Task<IActionResult?> AtualizarTreinamento([FromQuery] AtualizarTreinamentoRequest request, CancellationToken cancellationToken)
+        {
+            ResultadoOperacao resultado = await _AtualizarTreinamentoHandler.Executar(request, cancellationToken);
             if (resultado.Sucesso)
                 return Ok(resultado.Resultado);
             else
