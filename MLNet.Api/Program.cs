@@ -1,4 +1,5 @@
 using MLNet.Api.Configuracao;
+using MLNet.Aplicacao.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
 AppSettingsConfiguracao.Carregar(builder.Services, configuration);
 
 InjecaoDependenciaConfiguracao.RegistrarServicos(builder);
-
+builder.Services.RegistrarCqrs();
 
 
 builder.Services.AddControllers();
@@ -37,6 +38,11 @@ app.Use(async (context, next) =>
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors("AllowAll");
+
+var appSettings = app.Services.GetRequiredService<AppSettingsDto>();
+if (appSettings.RateLimit.Habilitado)
+    app.UseRateLimiter();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
