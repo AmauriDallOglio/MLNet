@@ -11,6 +11,8 @@ namespace MLNet.Api.Configuracao
         {
             AppSettingsDto appSettingsDto = configuration.Get<AppSettingsDto>() ?? new AppSettingsDto();
 
+            services.Configure<SegurancaDto>(configuration.GetSection(appSettingsDto.Seguranca.ApiKey));
+
             appSettingsDto = CarregaBancoDeDados(services, configuration, appSettingsDto);
             services.RegistrarRateLimit(appSettingsDto);
             services.AddSingleton(appSettingsDto);
