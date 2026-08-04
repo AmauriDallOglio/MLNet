@@ -9,9 +9,12 @@ namespace MLNet.Api.Configuracao
     {
         public static void Carregar(this IServiceCollection services, IConfigurationRoot configuration)
         {
+            //classe que receber AppSettingsDto via injeção de dependência terá exatamente esse objeto, sem suporte a reload on change.
             AppSettingsDto appSettingsDto = configuration.Get<AppSettingsDto>() ?? new AppSettingsDto();
+            services.AddSingleton(appSettingsDto);
 
-            services.Configure<SegurancaDto>(configuration.GetSection(appSettingsDto.Seguranca.ApiKey));
+            //é atualizado automaticamente se o arquivo appsettings.json mudar em tempo de execução.
+            services.Configure<AppSettingsDto>(configuration);
 
             appSettingsDto = CarregaBancoDeDados(services, configuration, appSettingsDto);
             services.RegistrarRateLimit(appSettingsDto);

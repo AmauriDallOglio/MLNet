@@ -1,5 +1,5 @@
 using MLNet.Api.Configuracao;
-using MLNet.Api.Middleware;
+using MLNet.Api.Configuracao.Middleware;
 using MLNet.Aplicacao.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,42 +13,10 @@ IConfigurationRoot configuration = new ConfigurationBuilder()
     .Build();
 
 
-
- 
 AppSettingsConfiguracao.Carregar(builder.Services, configuration);
-
 InjecaoDependenciaConfiguracao.RegistrarServicos(builder);
-builder.Services.RegistrarCqrs();
+ApiConfiguracao.ConfiguracaoSwagger(builder.Services);
 
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition("ApiKey", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        Name = "X-Api-Key",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
-        Description = "Informe a API Key do serviço"
-    });
-
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "ApiKey"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
-});
 
 var app = builder.Build();
 app.Use(async (context, next) =>
@@ -60,11 +28,10 @@ app.Use(async (context, next) =>
     }
     await next();
 });
-
 app.UseSwagger();
 app.UseSwaggerUI();
+app.ConfigurarMiddlewaresApi();
 app.UseCors("AllowAll");
-app.UseMiddleware<ApiKeyMiddleware>();
 
 var appSettings = app.Services.GetRequiredService<AppSettingsDto>();
 if (appSettings.RateLimit.Habilitado)
@@ -72,6 +39,5 @@ if (appSettings.RateLimit.Habilitado)
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 app.Run();
