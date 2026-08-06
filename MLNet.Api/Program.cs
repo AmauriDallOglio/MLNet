@@ -33,9 +33,9 @@ app.UseSwaggerUI();
 app.ConfigurarMiddlewaresApi();
 app.UseCors("AllowAll");
 
-var appSettings = app.Services.GetRequiredService<AppSettingsDto>();
-if (appSettings.RateLimit.Habilitado)
-    app.UseRateLimiter();
+// Ativa monitor e RateLimiter
+app.AtivarAppSettinngsConfiguracao();
+
 
 app.UseAuthentication();
 app.UseAuthorization();
